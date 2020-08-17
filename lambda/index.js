@@ -73,7 +73,7 @@ const RunConversationApiHandler = {
 
         let response = {
             apiResponse: {
-                duration : duration
+                duration : duration,
                 practice : practice
             }
         };
