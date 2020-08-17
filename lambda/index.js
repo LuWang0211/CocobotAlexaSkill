@@ -47,6 +47,42 @@ const RecordColorApiHandler = {
         return response;
     }
 }
+
+/**
+ * API Handler for RunConversationApiHandler API
+ * 
+ * @param handlerInput
+ * @returns API response object 
+ * 
+ * See https://developer.amazon.com/en-US/docs/alexa/conversations/handle-api-calls.html
+ */
+const RunConversationApiHandler = {
+    canHandle(handlerInput) {
+        return util.isApiRequest(handlerInput, 'RunConversation');
+    },
+    handle(handlerInput) {
+        console.log("Api Request [RunConversation]: ", JSON.stringify(handlerInput.requestEnvelope.request, null, 2));
+        // First get our request entity and grab the color passed in the API call
+        const args = util.getApiArguments(handlerInput);
+        const duration = args.duration;
+        const practice = args.practice;
+        // Store the favorite color in the session
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        sessionAttributes.duration = duration;
+        sessionAttributes.practice = practice;
+
+        let response = {
+            apiResponse: {
+                duration : duration
+                practice : practice
+            }
+        };
+        console.log("Api Response [RunConversation]: ", JSON.stringify(response, null, 2));
+        return response;
+    }
+}
+
+
 const IntroToAlexaConversationsButtonEventHandler = {
     canHandle(handlerInput){
         console.log(JSON.stringify(handlerInput.requestEnvelope));
@@ -108,6 +144,8 @@ const GetFavoriteColorApiHandler = {
         return response;
     }
 }
+
+
 /**
  * FallbackIntentHandler - Handle all other requests to the skill 
  * 
@@ -119,7 +157,7 @@ const GetFavoriteColorApiHandler = {
 const FallbackIntentHandler = {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
-        return request.type === 'IntentRequest' && request.intent.name !== 'GetFavoriteColorApiHandler' && request.intent.name !== 'RecordColorApiHandler';
+        return request.type === 'IntentRequest' && request.intent.name !== 'GetFavoriteColorApiHandler' && request.intent.name !== 'RecordColorApiHandler' && request.intent.name !== 'RunConversationApiHandler';
     },
     handle(handlerInput) {
         const intentName = handlerInput.requestEnvelope.request.intent.name;
