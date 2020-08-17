@@ -218,7 +218,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestInterceptors(LogRequestInterceptor)
     .addResponseInterceptors(LogResponseInterceptor)
     .addRequestHandlers(
-        RunConversationApiHandler
+        RunConversationApiHandler,
         RecordColorApiHandler,
         GetFavoriteColorApiHandler,
         IntroToAlexaConversationsButtonEventHandler,
