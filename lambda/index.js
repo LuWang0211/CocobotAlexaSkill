@@ -162,7 +162,7 @@ const FallbackIntentHandler = {
     handle(handlerInput) {
         const intentName = handlerInput.requestEnvelope.request.intent.name;
         console.log('In catch all intent handler. Intent invoked: ' + intentName);
-        const speechOutput = "Hmm, I'm not sure. You can tell me your favorite color or ask me what your favorite color is. What would you like to do";
+        const speechOutput = "Hmm, I'm not sure. You can tell me what practice you want to do to get relax. how long could you like to do?";
 
         return handlerInput.responseBuilder
             .speak(speechOutput)
