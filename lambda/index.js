@@ -82,6 +82,20 @@ const RunConversationApiHandler = {
     }
 }
 
+const DoNothingApiHandler = {
+    canHandle(handlerInput) {
+        return util.isApiRequest(handlerInput, 'DoNothing');
+    },
+    handle(handlerInput) {
+        console.log("Api Request [RunConversation]: ", JSON.stringify(handlerInput.requestEnvelope.request, null, 2));
+        let response = {
+            apiResponse: 0
+        };
+        console.log("Api Response [RunConversation]: ", JSON.stringify(response, null, 2));
+        return response;
+    }
+}
+
 
 const IntroToAlexaConversationsButtonEventHandler = {
     canHandle(handlerInput){
