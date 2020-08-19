@@ -96,6 +96,20 @@ const DoNothingApiHandler = {
     }
 }
 
+const RunEvaluationnApiHandler = {
+    canHandle(handlerInput) {
+        return util.isApiRequest(handlerInput, 'RunEvaluation');
+    },
+    handle(handlerInput) {
+        console.log("Api Request [RunEvaluation]: ", JSON.stringify(handlerInput.requestEnvelope.request, null, 2));
+        let response = {
+            apiResponse: 0
+        };
+        console.log("Api Response [RunEvaluation]: ", JSON.stringify(response, null, 2));
+        return response;
+    }
+}
+
 
 const IntroToAlexaConversationsButtonEventHandler = {
     canHandle(handlerInput){
@@ -234,6 +248,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         RunConversationApiHandler,
         DoNothingApiHandler,
+        RunEvaluationnApiHandler,
         RecordColorApiHandler,
         GetFavoriteColorApiHandler,
         IntroToAlexaConversationsButtonEventHandler,
