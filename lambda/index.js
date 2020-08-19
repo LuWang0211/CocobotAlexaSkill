@@ -96,26 +96,26 @@ const DoNothingApiHandler = {
     }
 }
 
-const RunEvaluationnApiHandler = {
-    canHandle(handlerInput) {
-        return util.isApiRequest(handlerInput, 'RunEvaluation');
-    },
-    handle(handlerInput) {
-        console.log("Api Request [RunEvaluation]: ", JSON.stringify(handlerInput.requestEnvelope.request, null, 2));
-                // First get our request entity and grab the color passed in the API call
-        const args = util.getApiArguments(handlerInput);
-        const feelingstatus = args.feelingstatus;
-        // Store the favorite color in the session
-        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-        sessionAttributes.feelingstatus = feelingstatus;
+// const RunEvaluationnApiHandler = {
+//     canHandle(handlerInput) {
+//         return util.isApiRequest(handlerInput, 'RunEvaluation');
+//     },
+//     handle(handlerInput) {
+//         console.log("Api Request [RunEvaluation]: ", JSON.stringify(handlerInput.requestEnvelope.request, null, 2));
+//                 // First get our request entity and grab the color passed in the API call
+//         const args = util.getApiArguments(handlerInput);
+//         const feelingstatus = args.feelingstatus;
+//         // Store the favorite color in the session
+//         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+//         sessionAttributes.feelingstatus = feelingstatus;
         
-        let response = {
-            apiResponse: feelingstatus
-        };
-        console.log("Api Response [RunEvaluation]: ", JSON.stringify(response, null, 2));
-        return response;
-    }
-}
+//         let response = {
+//             apiResponse: feelingstatus
+//         };
+//         console.log("Api Response [RunEvaluation]: ", JSON.stringify(response, null, 2));
+//         return response;
+//     }
+// }
 
 
 const IntroToAlexaConversationsButtonEventHandler = {
@@ -255,7 +255,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         RunConversationApiHandler,
         DoNothingApiHandler,
-        RunEvaluationnApiHandler,
+        // RunEvaluationnApiHandler,
         RecordColorApiHandler,
         GetFavoriteColorApiHandler,
         IntroToAlexaConversationsButtonEventHandler,
