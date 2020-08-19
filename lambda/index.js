@@ -104,13 +104,13 @@ const RunEvaluationnApiHandler = {
         console.log("Api Request [RunEvaluation]: ", JSON.stringify(handlerInput.requestEnvelope.request, null, 2));
                 // First get our request entity and grab the color passed in the API call
         const args = util.getApiArguments(handlerInput);
-        const feelingstatus = args.feelingstatus;
+        const feelingstatus = args.feelingstats;
         // Store the favorite color in the session
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-        sessionAttributes.feelingstatus = feelingstatus;
+        sessionAttributes.feelingstats = feelingstatus;
         
         let response = {
-            apiResponse: feelingstatus
+            apiResponse: feelingstats
         };
         console.log("Api Response [RunEvaluation]: ", JSON.stringify(response, null, 2));
         return response;
