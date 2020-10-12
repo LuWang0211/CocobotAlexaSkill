@@ -110,7 +110,7 @@ const RunEvaluationnApiHandler = {
         sessionAttributes.feelingstats = feelingstatus;
         
         let response = {
-            apiResponse: feelingstats
+            apiResponse: feelingstatus
         };
         console.log("Api Response [RunEvaluation]: ", JSON.stringify(response, null, 2));
         return response;
